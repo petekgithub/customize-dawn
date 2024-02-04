@@ -1,36 +1,27 @@
+/* Container for tabs */
 .tabs {
-  background-color: blue; /* Genel arka plan rengi */
-  overflow: hidden;
+  display: flex; /* Yatay olarak sıralanacak */
+  justify-content: space-between; /* Tabler arası boşluk bırakacak */
 }
 
-.tab-buttons {
-  margin-bottom: 10px;
+/* Individual tab */
+.tab {
+  width: calc(30% - 10px); /* Her tabın genişliği */
+  border: 1px solid #ccc; /* Tab kenarlık rengi */
+  padding: 10px; /* Tab iç kenarlık */
 }
 
-.tab-button {
-  background-color: white; /* Başlık arka plan rengi */
-  border: none;
-  color: black;
-  padding: 10px 20px;
-  cursor: pointer;
-  float: left;
-  transition: background-color 0.3s;
+/* Başlık */
+.tab h2 {
+  margin-top: 0; /* Başlığın üst kenarlığını sıfırlar */
 }
 
-.tab-button:hover {
-  background-color: lightgray;
+/* Paragraf içeriği */
+.tab p {
+  margin-bottom: 0; /* Paragrafın alt kenarlık değerini sıfırlar */
 }
 
-.tab-content {
-  clear: both;
-}
-
-.tab-pane {
-  display: none;
-  padding: 20px;
-  background-color: white; /* İçerik arka plan rengi */
-}
-
-.tab-pane.active {
-  display: block;
+/* Aktif tab */
+.tab.active {
+  background-color: #f0f0f0; /* Aktif tabın arka plan rengi */
 }
