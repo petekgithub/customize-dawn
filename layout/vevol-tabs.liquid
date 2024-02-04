@@ -13,6 +13,20 @@
   </div>
 </vevol-tabs>
 
+  <!-- JUST TRY -->
+<vevol-tabs>
+  <!-- html structure -->
+  <div class="tabs">
+    {% for block in section.blocks %}
+      <div class="tab">
+        <h2>{{ block.heading }}</h2>
+        <p>{{ block.content }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</vevol-tabs>
+
+
 {% schema %}
 {
   "name": "Tabs section",
