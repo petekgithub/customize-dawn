@@ -1,13 +1,22 @@
-
 <vevol-tabs>
-  <!-- html structure -->
   <div class="tabs">
-    {% for block in section.blocks %}
-      <div class="tab">
-        <h2>{{ block.heading }}</h2>
-        <p>{{ block.content }}</p>
-      </div>
-    {% endfor %}
+    <!-- Tab buttons -->
+    <div class="tab-buttons">
+      {% for block in section.blocks %}
+        <button class="tab-button" data-tab="{{ forloop.index }}">
+          {{ block.heading }}
+        </button>
+      {% endfor %}
+    </div>
+
+    <!-- Tab content -->
+    <div class="tab-content">
+      {% for block in section.blocks %}
+        <div class="tab-pane" data-tab="{{ forloop.index }}">
+          {{ block.content }}
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </vevol-tabs>
 
@@ -37,7 +46,7 @@
           "type": "richtext",
           "id": "content",
           "label": "Tab content",
-          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, vitae, in ultrices massa, eleifend elementum aenean. Nibh gravida adipiscing ullamcorper risus in amet est. Quis nascetur ultrices a ante. Orci nulla porttitor nibh dictum.</p>"
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
         }
       ]
     }
@@ -46,15 +55,9 @@
     {
       "name": "Tabs",
       "blocks": [
-        {
-          "type": "tab"
-        },
-        {
-          "type": "tab"
-        },
-        {
-          "type": "tab"
-        }
+        { "type": "tab" },
+        { "type": "tab" },
+        { "type": "tab" }
       ]
     }
   ]

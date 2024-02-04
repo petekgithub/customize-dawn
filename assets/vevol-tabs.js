@@ -1,23 +1,18 @@
-class VevolTabs extends HTMLElement {
-  connectedCallback() {
-    this.addEventListener('click', (event) => {
-      if (event.target.classList.contains('tab-heading')) {
-        this.switchTab(event.target.dataset.tab);
-      }
-    });
-  }
-  switchTab(tabName) {
-    // hide all tabs
-    this.querySelectorAll('.tab').forEach((tab) => {
-      tab.classList.remove('active');
-    });
+document.addEventListener('DOMContentLoaded', function () {
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-pane');
 
-    // show the selected tab
-    const selectedTab = this.querySelector(`[data-tab="${tabName}"]`);
-    if (selectedTab) {
-      selectedTab.classList.add('active');
-    }
-  }
-}
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const tabNum = button.dataset.tab;
 
-customElements.define('vevol-tabs', VevolTabs);
+      // Deactivate all tab buttons and content
+      tabButtons.forEach((btn) => btn.classList.remove('active'));
+      tabContents.forEach((content) => content.classList.remove('active'));
+
+      // Activate the clicked tab button and content
+      button.classList.add('active');
+      document.querySelector(`.tab-pane[data-tab="${tabNum}"]`).classList.add('active');
+    });
+  });
+});

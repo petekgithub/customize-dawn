@@ -1,37 +1,36 @@
-.vevol-tabs {
-  /* Tabbed section container styles */
-  background-color: #4451d7;
-}
-
 .tabs {
-  /* Container for tabs */
-  display: flex;
-  background-color: #fff;
+  background-color: blue; /* Genel arka plan rengi */
+  overflow: hidden;
 }
 
-.tab {
-  /* Individual tab styles */
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-  margin-right: 5px;
-  display: none; /* Hide tabs by default */
+.tab-buttons {
+  margin-bottom: 10px;
 }
 
-.tab:last-child {
-  margin-right: 0;
+.tab-button {
+  background-color: white; /* Başlık arka plan rengi */
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  cursor: pointer;
+  float: left;
+  transition: background-color 0.3s;
 }
 
-.tab.active {
-  display: block; /* Show active tab */
+.tab-button:hover {
+  background-color: lightgray;
 }
 
-.tab h2 {
-  font-style: bold;
-  color: #1b1e20;
+.tab-content {
+  clear: both;
 }
 
-.tab p {
-  color: #1b1e20;
+.tab-pane {
+  display: none;
+  padding: 20px;
+  background-color: white; /* İçerik arka plan rengi */
+}
+
+.tab-pane.active {
+  display: block;
 }
