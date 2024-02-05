@@ -6,7 +6,7 @@ function showTabContent(tabButton, tabId) {
   });
 
   // Tüm tab içeriklerini gizle
-  let tabContents = document.querySelectorAll('.content');
+  let tabContents = document.querySelectorAll('.tab-content div');
   tabContents.forEach(function (content) {
     content.style.display = 'none';
   });
