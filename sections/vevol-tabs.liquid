@@ -2,14 +2,14 @@
   <div class="container">
     <div class="tab-buttons">
       {% for tab in section.blocks %}
-        <div class="tab-button" data-tab="{{ forloop.index0 }}">
+        <div class="tab-button" onclick="showTabContent(this)">
           {{ tab.settings.heading }}
         </div>
       {% endfor %}
     </div>
     <div class="tab-content">
       {% for tab in section.blocks %}
-        <div class="content" data-tab="{{ forloop.index0 }}">
+        <div class="content">
           {{ tab.settings.content }}
         </div>
       {% endfor %}
