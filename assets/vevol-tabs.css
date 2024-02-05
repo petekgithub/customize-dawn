@@ -1,4 +1,4 @@
-.tabs {
+.container {
   width: 80vmin;
   margin: 0 auto; /* Merkezlemek için */
   background-color: #ffffff;
@@ -23,7 +23,7 @@
   padding: 50px 40px;
 }
 
-.inner-content {
+.content {
   display: none;
 }
 

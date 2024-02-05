@@ -1,6 +1,6 @@
     <!-- part1 -->
     <!-- liquid template -->
-<vevol-tabs>
+{% comment %} <vevol-tabs>
   <div class="tabs">
     <!-- Tab buttons -->
     <div class="tab-buttons">
@@ -20,7 +20,26 @@
       {% endfor %}
     </div>
   </div>
+</vevol-tabs> {% endcomment %}
+
+<vevol-tabs>
+  <div class="container">
+    <h2>{{ section.settings.section_heading }}</h2>
+    <div class="tabs">
+      {% for tab in section.blocks %}
+        <h3>{{ tab.settings.heading }}</h3>
+      {% endfor %}
+    </div>
+    <div class="tab-content">
+      {% for tab in section.blocks %}
+        <div>
+          {{ tab.settings.content }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 </vevol-tabs>
+
 
 <!-- part2 -->
 <!-- liquid schema -->
