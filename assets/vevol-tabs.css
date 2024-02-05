@@ -6,11 +6,11 @@
 }
 
 .tab-buttons {
-  display: flex; /* Flex container oluşturmak için */
+  display: flex;
 }
 
 .tab-button {
-  flex: 1; /* Eşit genişlik dağıtmak için */
+  flex: 1;
   text-align: center;
   padding: 15px 0;
   cursor: pointer;

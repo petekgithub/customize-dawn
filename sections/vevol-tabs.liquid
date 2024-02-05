@@ -1,45 +1,22 @@
-    <!-- part1 -->
-    <!-- liquid template -->
-{% comment %} <vevol-tabs>
-  <div class="tabs">
-    <!-- Tab buttons -->
-    <div class="tab-buttons">
-      {% for block in section.blocks %}
-        <button class="tab-button" data-tab="{{ forloop.index }}">
-          {{ block.label }}
-        </button>
-      {% endfor %}
-    </div>
-
-    <!-- Tab content -->
-    <div class="tab-content">
-      {% for block in section.blocks %}
-        <div class="inner-content" data-tab="{{ forloop.index }}">
-          {{ block.content }}
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-</vevol-tabs> {% endcomment %}
-
 <vevol-tabs>
   <div class="container">
     <h2>{{ section.settings.section_heading }}</h2>
-    <div class="tabs">
+    <div class="tab-buttons">
       {% for tab in section.blocks %}
-        <h3>{{ tab.settings.heading }}</h3>
+        <div class="tab-button" data-tab="{{ forloop.index }}">
+          {{ tab.settings.heading }}
+        </div>
       {% endfor %}
     </div>
     <div class="tab-content">
       {% for tab in section.blocks %}
-        <div>
+        <div class="content" data-tab="{{ forloop.index }}">
           {{ tab.settings.content }}
         </div>
       {% endfor %}
     </div>
   </div>
 </vevol-tabs>
-
 
 <!-- part2 -->
 <!-- liquid schema -->
