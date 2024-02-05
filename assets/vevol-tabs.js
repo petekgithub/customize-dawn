@@ -8,7 +8,7 @@ function showTabContent(tab) {
   });
 
   // Tüm tab içeriklerini gizle
-  let tabContents = document.querySelectorAll('.content');
+  let tabContents = document.querySelectorAll('.tab-content');
   tabContents.forEach(function (content) {
     content.style.display = 'none';
   });
@@ -17,7 +17,7 @@ function showTabContent(tab) {
   tab.classList.add('active');
 
   // İlgili tab içeriğini göster
-  let tabContent = document.querySelector('.content[data-tab="' + tabIndex + '"]');
+  let tabContent = document.querySelector('.tab-content[data-tab="' + tabIndex + '"]');
   if (tabContent) {
     tabContent.style.display = 'block'; // İlgili tab içeriğini göster
   }
