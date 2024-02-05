@@ -21,6 +21,9 @@
 .tab-content {
   background-color: #ffffff;
   padding: 50px 40px;
+  line-height: 1.9;
+  letter-spacing: 0.4px;
+  color: #202238;
 }
 
 .content {
@@ -31,5 +34,6 @@
   display: block;
 }
 .tab-button:active {
-  background-color: #ffffff; /* istediğiniz arka plan rengi */
+  background-color: #ffffff;
+  color: #4d5bf9;
 }
