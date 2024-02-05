@@ -7,11 +7,11 @@ function showTabContent(tab) {
     button.classList.remove('active');
   });
 
-  // Tüm tab içeriklerini gizle
-  let tabContents = document.querySelectorAll('.tab-content');
-  tabContents.forEach(function (content) {
-    content.style.display = 'none';
-  });
+  // // Tüm tab içeriklerini gizle
+  // let tabContents = document.querySelectorAll('.tab-content');
+  // tabContents.forEach(function (content) {
+  //   content.style.display = 'none';
+  // });
 
   // Tıklanan tab butonunu aktif yap
   tab.classList.add('active');
