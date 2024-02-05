@@ -15,7 +15,13 @@ function showTabContent(tab) {
   tab.classList.add('active');
 
   // İlgili tab içeriğini göster
-  let tabContentId = tab.getAttribute('data-tab');
-  let tabContent = document.querySelector('.content[data-tab="' + tabContentId + '"]');
+  var tabContentId = tab.getAttribute('data-tab');
+  var tabContent = document.querySelector('.content[data-tab="' + tabContentId + '"]');
   tabContent.style.display = 'block';
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  // İlk tabı varsayılan olarak göster
+  var defaultTabButton = document.querySelector('.tab-button');
+  showTabContent(defaultTabButton);
+});
