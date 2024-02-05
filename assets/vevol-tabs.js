@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const tabButtons = document.querySelectorAll('.tab-button');
-  const tabContents = document.querySelectorAll('.tab-pane');
+  const tabContents = document.querySelectorAll('.inner-content');
 
   tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Activate the clicked tab button and content
       button.classList.add('active');
-      document.querySelector(`.tab-pane[data-tab="${tabNum}"]`).classList.add('active');
+      document.querySelector(`.inner-content[data-tab="${tabNum}"]`).classList.add('active');
     });
   });
 });

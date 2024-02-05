@@ -1,27 +1,55 @@
-/* Container for tabs */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  background-color: #4d5bf9;
+}
 .tabs {
-  display: flex; /* Yatay olarak sıralanacak */
-  justify-content: space-between; /* Tabler arası boşluk bırakacak */
+  width: 80vmin;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 120px;
+  background-color: #ffffff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
-
-/* Individual tab */
-.tab {
-  width: calc(30% - 10px); /* Her tabın genişliği */
-  border: 1px solid #ccc; /* Tab kenarlık rengi */
-  padding: 10px; /* Tab iç kenarlık */
+.tab-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
-
-/* Başlık */
-.tab h2 {
-  margin-top: 0; /* Başlığın üst kenarlığını sıfırlar */
+.label {
+  background-color: #e4e9fd;
+  text-align: center;
+  padding: 15px 0;
+  cursor: pointer;
+  font-weight: 600;
 }
-
-/* Paragraf içeriği */
-.tab p {
-  margin-bottom: 0; /* Paragrafın alt kenarlık değerini sıfırlar */
+.tab-content {
+  background-color: #ffffff;
+  padding: 50px 40px;
 }
-
-/* Aktif tab */
-.tab.active {
-  background-color: #f0f0f0; /* Aktif tabın arka plan rengi */
+.tab-content h4 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #000224;
+  font-weight: 600;
+}
+.tab-content p {
+  text-align: justify;
+  line-height: 1.9;
+  letter-spacing: 0.4px;
+  color: #202238;
+}
+.tab-content div {
+  display: none;
+}
+.tab-content .active {
+  display: block;
+}
+.tabs .active {
+  background-color: #ffffff;
+  color: #4d5bf9;
 }
