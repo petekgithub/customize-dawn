@@ -1,17 +1,27 @@
-function showTabContent(tabButton) {
-  // Deactivate all tab buttons
-  const allTabButtons = document.querySelectorAll('.tab-button');
-  allTabButtons.forEach((button) => button.classList.remove('active'));
+document.addEventListener('DOMContentLoaded', function () {
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.inner-content');
 
-  // Activate the clicked tab button
-  tabButton.classList.add('active');
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const tabNum = button.dataset.tab;
 
-  // Hide all tab contents
-  const allContents = document.querySelectorAll('.content');
-  allContents.forEach((content) => (content.style.display = 'none'));
+      // Deactivate all tab buttons and content
+      tabButtons.forEach((btn) => btn.classList.remove('active'));
+      tabContents.forEach((content) => content.classList.remove('active'));
 
-  // Show the corresponding tab content
-  const index = Array.from(tabButton.parentNode.children).indexOf(tabButton);
-  const tabContents = document.querySelectorAll('.content');
-  tabContents[index].style.display = 'block';
-}
+      // Activate the clicked tab button and content
+      button.classList.add('active');
+      document.querySelector(`.inner-content[data-tab="${tabNum}"]`).classList.add('active');
+
+      // Change background color of active button
+      tabButtons.forEach((btn) => {
+        if (btn.classList.contains('active')) {
+          btn.style.backgroundColor = '#ffffff'; // Set background color to white
+        } else {
+          btn.style.backgroundColor = ''; // Reset background color
+        }
+      });
+    });
+  });
+});
