@@ -2,7 +2,7 @@
   <div class="container">
     <div class="tab-buttons">
       {% for tab in section.blocks %}
-        <div class="tab-button" onclick="showTabContent(this)">
+        <div class="tab-button" onclick="showTabContent({{ forloop.index0 }})">
           {{ tab.settings.heading }}
         </div>
       {% endfor %}
