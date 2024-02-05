@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const tabButtons = document.querySelectorAll('.tab-button');
   const tabContents = document.querySelectorAll('.inner-content');
 
+  // İlk tabı ve içeriğini aktif yap
+  tabButtons[0].classList.add('active');
+  tabContents[0].classList.add('active');
+
   tabButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
       // Tüm içerikleri gizle
@@ -14,10 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.classList.remove('active');
       });
 
-      // Tıklanan tab butonunu aktif hale getir
+      // Tıklanan tab butonunu ve içeriğini aktif hale getir
       button.classList.add('active');
-
-      // İlgili içeriği göster
       tabContents[index].classList.add('active');
     });
   });
