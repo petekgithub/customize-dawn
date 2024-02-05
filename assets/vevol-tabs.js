@@ -1,24 +1,29 @@
-function showTabContent(tab) {
-  let tabIndex = tab.getAttribute('data-tab');
-
+function showTabContent(tabButton, tabId) {
   // Tüm tab butonlarının aktiflik özelliğini kaldır
   let tabButtons = document.querySelectorAll('.tab-button');
   tabButtons.forEach(function (button) {
     button.classList.remove('active');
   });
 
-  // // Tüm tab içeriklerini gizle
-  // let tabContents = document.querySelectorAll('.tab-content');
-  // tabContents.forEach(function (content) {
-  //   content.style.display = 'none';
-  // });
+  // Tüm tab içeriklerini gizle
+  let tabContents = document.querySelectorAll('.content');
+  tabContents.forEach(function (content) {
+    content.style.display = 'none';
+  });
 
   // Tıklanan tab butonunu aktif yap
-  tab.classList.add('active');
+  tabButton.classList.add('active');
 
   // İlgili tab içeriğini göster
-  let tabContent = document.querySelector('.tab-content[data-tab="' + tabIndex + '"]');
+  let tabContent = document.getElementById(tabId);
   if (tabContent) {
-    tabContent.style.display = 'block'; // İlgili tab içeriğini göster
+    tabContent.style.display = 'block'; // contenti göster
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  // İlk tabı letsayılan olarak göster
+  let defaultTabButton = document.querySelector('.tab-button');
+  let defaultTabId = defaultTabButton.getAttribute('data-tab-id');
+  showTabContent(defaultTabButton, defaultTabId);
+});

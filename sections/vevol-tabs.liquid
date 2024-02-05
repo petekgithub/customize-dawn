@@ -2,21 +2,19 @@
   <div class="container">
     <div class="tab-buttons">
       {% for tab in section.blocks %}
-        <div class="tab-button" onclick="showTabContent(this)">
+        <div class="tab-button" onclick="showTabContent(this, '{{ tab.id }}')">
           {{ tab.settings.heading }}
         </div>
       {% endfor %}
     </div>
     <div class="tab-content">
       {% for tab in section.blocks %}
-        <div class="content">
+        <div class="content" id="{{ tab.id }}">
           {{ tab.settings.content }}
         </div>
       {% endfor %}
     </div>
   </div>
-</vevol-tabs>
-
 <!-- part2 -->
 <!-- liquid schema -->
 {% schema %}
