@@ -22,7 +22,7 @@ function showTabContent(tabButton, tabId) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // İlk tabı letsayılan olarak göster
+  // İlk tabı varsayılan olarak göster
   let defaultTabButton = document.querySelector('.tab-button');
   let defaultTabId = defaultTabButton.getAttribute('data-tab-id');
   showTabContent(defaultTabButton, defaultTabId);
