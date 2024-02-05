@@ -30,3 +30,6 @@
 .active {
   display: block;
 }
+.tab-button:active {
+  background-color: #ffffff; /* istediğiniz arka plan rengi */
+}
