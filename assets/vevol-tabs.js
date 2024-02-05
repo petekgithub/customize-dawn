@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
   tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const tabNum = button.dataset.tab;
-      console.log('click yapıldı: ' + tabNum);
 
       // Deactivate all tab buttons and content
       tabButtons.forEach((btn) => {

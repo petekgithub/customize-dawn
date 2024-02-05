@@ -33,7 +33,7 @@
 .active {
   display: block;
 }
-.tab-button:active {
+.tab-button.active {
   background-color: #ffffff;
   color: #4d5bf9;
 }
