@@ -38,14 +38,14 @@ class VevolTabs extends HTMLElement {
 
   connectedCallback() {
     // Add event listener to handle tab switching
-    this.addEventListener('click', this.handleTabClick);
+    this.addEventListener('click', this.handleTabClick.bind(this));
     // Show the default tab
     this.showDefaultTab();
   }
 
   disconnectedCallback() {
     // Remove event listener when the component is removed
-    this.removeEventListener('click', this.handleTabClick);
+    this.removeEventListener('click', this.handleTabClick.bind(this));
   }
 
   showDefaultTab() {
