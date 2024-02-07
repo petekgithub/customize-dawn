@@ -1,59 +1,94 @@
 // function showTabContent(tabButton, tabId) {
-//   // Tüm tab butonlarının aktiflik özelliğini kaldır
+//   // remove the active properties from all buttons
 //   let tabButtons = document.querySelectorAll('.tab-button');
 //   tabButtons.forEach(function (button) {
 //     button.classList.remove('active');
 //   });
 
-//   // Tüm tab içeriklerini gizle
+//   // close the all tab contents
 //   let tabContents = document.querySelectorAll('.tab-content div');
 //   tabContents.forEach(function (content) {
 //     content.style.display = 'none';
 //   });
 
-//   // Tıklanan tab butonunu aktif yap
+//   // activate the tabbutton - clickable one
 //   tabButton.classList.add('active');
 
-//   // İlgili tab içeriğini göster
+//   // show the realed content
 //   let tabContent = document.getElementById(tabId);
 //   if (tabContent) {
-//     tabContent.style.display = 'block'; // contenti göster
+//     tabContent.style.display = 'block'; // show the content
 //   }
 // }
 
 // document.addEventListener('DOMContentLoaded', function () {
-//   // İlk tabı varsayılan olarak göster
+//   // show the first tab - like default
 //   let defaultTabButton = document.querySelector('.tab-button');
 //   let defaultTabId = defaultTabButton.getAttribute('data-tab-id');
 //   showTabContent(defaultTabButton, defaultTabId);
 // });
 
-function showTabContent(tabButton, tabId) {
-  // Tüm tab butonlarının aktiflik özelliğini kaldır
-  let tabButtons = document.querySelectorAll('.tab-button');
-  tabButtons.forEach(function (button) {
-    button.classList.remove('active');
-  });
+// web component
 
-  // Tüm tab içeriklerini gizle
-  let tabContents = document.querySelectorAll('.tab-content div');
-  tabContents.forEach(function (content) {
-    content.style.display = 'none';
-  });
+// Define the Web Component
+class VevolTabs extends HTMLElement {
+  constructor() {
+    super();
+  }
 
-  // Tıklanan tab butonunu aktif yap
-  tabButton.classList.add('active');
+  connectedCallback() {
+    // Add event listener to handle tab switching
+    this.addEventListener('click', this.handleTabClick);
+    // Show the default tab
+    this.showDefaultTab();
+  }
 
-  // İlgili tab içeriğini göster
-  let tabContent = document.getElementById(tabId);
-  if (tabContent) {
-    tabContent.style.display = 'block'; // contenti göster
+  disconnectedCallback() {
+    // Remove event listener when the component is removed
+    this.removeEventListener('click', this.handleTabClick);
+  }
+
+  showDefaultTab() {
+    // Get the default tab button
+    let defaultTabButton = this.querySelector('.tab-button');
+    if (defaultTabButton) {
+      let defaultTabId = defaultTabButton.getAttribute('data-tab-id');
+      this.showTabContent(defaultTabButton, defaultTabId);
+    }
+  }
+
+  handleTabClick(event) {
+    // Check if clicked element is a tab button
+    if (event.target.classList.contains('tab-button')) {
+      let tabButton = event.target;
+      let tabId = tabButton.getAttribute('data-tab-id');
+      this.showTabContent(tabButton, tabId);
+    }
+  }
+
+  showTabContent(tabButton, tabId) {
+    // Remove 'active' class from all tab buttons
+    let tabButtons = this.querySelectorAll('.tab-button');
+    tabButtons.forEach(function (button) {
+      button.classList.remove('active');
+    });
+
+    // Hide all tab contents
+    let tabContents = this.querySelectorAll('.tab-content div');
+    tabContents.forEach(function (content) {
+      content.style.display = 'none';
+    });
+
+    // Add 'active' class to the clicked tab button
+    tabButton.classList.add('active');
+
+    // Show the corresponding tab content
+    let tabContent = this.querySelector(`#${tabId}`);
+    if (tabContent) {
+      tabContent.style.display = 'block';
+    }
   }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  // İlk tabı varsayılan olarak göster
-  let defaultTabButton = document.querySelector('.tab-button');
-  let defaultTabId = defaultTabButton.getAttribute('data-tab-id');
-  showTabContent(defaultTabButton, defaultTabId);
-});
+// Define the custom element
+customElements.define('vevol-tabs', VevolTabs);
