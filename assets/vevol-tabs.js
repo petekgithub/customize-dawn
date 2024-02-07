@@ -90,5 +90,4 @@ class VevolTabs extends HTMLElement {
   }
 }
 
-// Define the custom element
 customElements.define('vevol-tabs', VevolTabs);
