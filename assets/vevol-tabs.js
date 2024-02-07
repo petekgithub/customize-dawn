@@ -29,61 +29,62 @@
 // });
 
 // web component
-
-// Define the Web Component
 class VevolTabs extends HTMLElement {
   constructor() {
     super();
+    this.attachShadow({ mode: 'open' });
   }
 
   connectedCallback() {
-    // Add event listener to handle tab switching
-    this.addEventListener('click', this.handleTabClick.bind(this));
-    // Show the default tab
-    this.showDefaultTab();
+    this.render();
+    this.attachEventListeners();
   }
 
-  disconnectedCallback() {
-    // Remove event listener when the component is removed
-    this.removeEventListener('click', this.handleTabClick.bind(this));
+  render() {
+    const template = `
+      <style>
+        /* Your CSS styles for tabs and content here */
+      </style>
+      <div class="container">
+        <div class="tab-buttons">
+          <slot name="tab-buttons"></slot>
+        </div>
+        <div class="tab-content">
+          <slot name="tab-content"></slot>
+        </div>
+      </div>
+    `;
+    this.shadowRoot.innerHTML = template;
   }
 
-  showDefaultTab() {
-    // Get the default tab button
-    let defaultTabButton = this.querySelector('.tab-button');
-    if (defaultTabButton) {
-      let defaultTabId = defaultTabButton.getAttribute('data-tab-id');
-      this.showTabContent(defaultTabButton, defaultTabId);
-    }
+  attachEventListeners() {
+    this.shadowRoot.querySelectorAll('.tab-button').forEach((tabButton) => {
+      tabButton.addEventListener('click', () => {
+        const tabId = tabButton.getAttribute('data-tab-id');
+        this.showTabContent(tabId);
+      });
+    });
   }
 
-  handleTabClick(event) {
-    // Check if clicked element is a tab button
-    if (event.target.classList.contains('tab-button')) {
-      let tabButton = event.target;
-      let tabId = tabButton.getAttribute('data-tab-id');
-      this.showTabContent(tabButton, tabId);
-    }
-  }
-
-  showTabContent(tabButton, tabId) {
+  showTabContent(tabId) {
     // Remove 'active' class from all tab buttons
-    let tabButtons = this.querySelectorAll('.tab-button');
-    tabButtons.forEach(function (button) {
-      button.classList.remove('active');
+    this.shadowRoot.querySelectorAll('.tab-button').forEach((tabButton) => {
+      tabButton.classList.remove('active');
     });
 
     // Hide all tab contents
-    let tabContents = this.querySelectorAll('.content');
-    tabContents.forEach(function (content) {
+    this.shadowRoot.querySelectorAll('.content').forEach((content) => {
       content.style.display = 'none';
     });
 
     // Add 'active' class to the clicked tab button
-    tabButton.classList.add('active');
+    const tabButton = this.shadowRoot.querySelector(`[data-tab-id="${tabId}"]`);
+    if (tabButton) {
+      tabButton.classList.add('active');
+    }
 
     // Show the corresponding tab content
-    let tabContent = this.querySelector(`#${tabId}`);
+    const tabContent = this.shadowRoot.getElementById(tabId);
     if (tabContent) {
       tabContent.style.display = 'block';
     }

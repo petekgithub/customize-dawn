@@ -1,4 +1,4 @@
-<vevol-tabs>
+{% comment %} <vevol-tabs>
   <div class="container">
     <div class="tab-buttons">
       {% for tab in section.blocks %}
@@ -16,9 +16,29 @@
     </div>
   </div>
 
+</vevol-tabs> {% endcomment %}
+
+{% comment %} web component {% endcomment %}
+
+<vevol-tabs>
+  <div class="tab-buttons" slot="tab-buttons">
+    {% for tab in section.blocks %}
+      <div class="tab-button" data-tab-id="{{ tab.id }}">
+        {{ tab.settings.heading }}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="tab-content" slot="tab-content">
+    {% for tab in section.blocks %}
+      <div class="content" id="{{ tab.id }}">
+        {{ tab.settings.content }}
+      </div>
+    {% endfor %}
+  </div>
 </vevol-tabs>
-<!-- part2 -->
-<!-- liquid schema -->
+
+
+
 {% schema %}
 {
   "name": "Tabs section",
