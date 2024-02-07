@@ -74,7 +74,7 @@ class VevolTabs extends HTMLElement {
     });
 
     // Hide all tab contents
-    let tabContents = this.querySelectorAll('.tab-content div');
+    let tabContents = this.querySelectorAll('.content');
     tabContents.forEach(function (content) {
       content.style.display = 'none';
     });
