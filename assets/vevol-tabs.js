@@ -32,61 +32,43 @@
 class VevolTabs extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    // No shadow DOM attachment needed
   }
 
   connectedCallback() {
-    this.render();
+    // No need for rendering, as HTML markup is provided directly in the HTML template
     this.attachEventListeners();
   }
 
-  render() {
-    const template = `
-      <style>
-        /* Your CSS styles for tabs and content here */
-      </style>
-      <div class="container">
-        <div class="tab-buttons">
-          <slot name="tab-buttons"></slot>
-        </div>
-        <div class="tab-content">
-          <slot name="tab-content"></slot>
-        </div>
-      </div>
-    `;
-    this.shadowRoot.innerHTML = template;
-  }
-
   attachEventListeners() {
-    this.shadowRoot.querySelectorAll('.tab-button').forEach((tabButton) => {
-      tabButton.addEventListener('click', () => {
-        const tabId = tabButton.getAttribute('data-tab-id');
+    const tabButtons = this.querySelectorAll('.tab-button');
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab-id');
         this.showTabContent(tabId);
       });
     });
   }
 
   showTabContent(tabId) {
-    // Remove 'active' class from all tab buttons
-    this.shadowRoot.querySelectorAll('.tab-button').forEach((tabButton) => {
-      tabButton.classList.remove('active');
+    const tabButtons = this.querySelectorAll('.tab-button');
+    tabButtons.forEach((button) => {
+      button.classList.remove('active');
     });
 
-    // Hide all tab contents
-    this.shadowRoot.querySelectorAll('.content').forEach((content) => {
+    const tabContents = this.querySelectorAll('.content');
+    tabContents.forEach((content) => {
       content.style.display = 'none';
     });
 
-    // Add 'active' class to the clicked tab button
-    const tabButton = this.shadowRoot.querySelector(`[data-tab-id="${tabId}"]`);
-    if (tabButton) {
-      tabButton.classList.add('active');
+    const activeButton = this.querySelector(`[data-tab-id="${tabId}"]`);
+    if (activeButton) {
+      activeButton.classList.add('active');
     }
 
-    // Show the corresponding tab content
-    const tabContent = this.shadowRoot.getElementById(tabId);
-    if (tabContent) {
-      tabContent.style.display = 'block';
+    const activeContent = this.querySelector(`#${tabId}`);
+    if (activeContent) {
+      activeContent.style.display = 'block';
     }
   }
 }
