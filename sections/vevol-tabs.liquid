@@ -18,7 +18,10 @@
 
 </vevol-tabs> {% endcomment %}
 
-{% comment %} web component {% endcomment %}
+{% comment %} Web component - This Web Component provides a tab interface.
+  users can navigate through different content by clicking on a series of tabs.
+{% endcomment %}
+{% comment %} With slot, related tabbuttons/ tabcontents will add there. {% endcomment %}
 
 <vevol-tabs>
   <div class="tab-buttons" slot="tab-buttons">
@@ -36,7 +39,6 @@
     {% endfor %}
   </div>
 </vevol-tabs>
-
 
 
 {% schema %}

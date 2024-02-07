@@ -28,18 +28,25 @@
 //   showTabContent(defaultTabButton, defaultTabId);
 // });
 
-// web component
+// Web Component
 class VevolTabs extends HTMLElement {
   constructor() {
     super();
+    //this.attachShadow({ mode: 'open' }); shadow DOM
     // No shadow DOM attachment needed
   }
 
+  /**
+   *  Function mainly serves to attach event listeners after the component is connected to the DOM.
+   * This ensures that the event listeners are set up and ready to respond to user interactions.
+   * This method is invoked when the element is inserted into the DOM.
+   * */
   connectedCallback() {
     // No need for rendering, as HTML markup is provided directly in the HTML template
     this.attachEventListeners();
   }
 
+  //When a tab button is clicked, it triggers the showTabContent()
   attachEventListeners() {
     const tabButtons = this.querySelectorAll('.tab-button');
     tabButtons.forEach((button) => {
