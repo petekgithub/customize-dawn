@@ -1,48 +1,13 @@
-// function showTabContent(tabButton, tabId) {
-//   // remove the active properties from all buttons
-//   let tabButtons = document.querySelectorAll('.tab-button');
-//   tabButtons.forEach(function (button) {
-//     button.classList.remove('active');
-//   });
-
-//   // close the all tab contents
-//   let tabContents = document.querySelectorAll('.tab-content div');
-//   tabContents.forEach(function (content) {
-//     content.style.display = 'none';
-//   });
-
-//   // activate the tabbutton - clickable one
-//   tabButton.classList.add('active');
-
-//   // show the realed content
-//   let tabContent = document.getElementById(tabId);
-//   if (tabContent) {
-//     tabContent.style.display = 'block'; // show the content
-//   }
-// }
-
-// document.addEventListener('DOMContentLoaded', function () {
-//   // show the first tab - like default
-//   let defaultTabButton = document.querySelector('.tab-button');
-//   let defaultTabId = defaultTabButton.getAttribute('data-tab-id');
-//   showTabContent(defaultTabButton, defaultTabId);
-// });
-
-// Web Component
 class VevolTabs extends HTMLElement {
   constructor() {
     super();
     //this.attachShadow({ mode: 'open' }); shadow DOM
-    // No shadow DOM attachment needed
   }
 
   /**
-   *  Function mainly serves to attach event listeners after the component is connected to the DOM.
-   * This ensures that the event listeners are set up and ready to respond to user interactions.
    * This method is invoked when the element is inserted into the DOM.
    * */
   connectedCallback() {
-    // No need for rendering, as HTML markup is provided directly in the HTML template
     this.attachEventListeners();
   }
 
@@ -57,7 +22,9 @@ class VevolTabs extends HTMLElement {
     });
   }
 
+  //responsible for displaying the content
   showTabContent(tabId) {
+    //first removes the active class
     const tabButtons = this.querySelectorAll('.tab-button');
     tabButtons.forEach((button) => {
       button.classList.remove('active');
@@ -68,6 +35,7 @@ class VevolTabs extends HTMLElement {
       content.style.display = 'none';
     });
 
+    //adds the active class to the clicked tab button
     const activeButton = this.querySelector(`[data-tab-id="${tabId}"]`);
     if (activeButton) {
       activeButton.classList.add('active');
@@ -80,4 +48,5 @@ class VevolTabs extends HTMLElement {
   }
 }
 
+//the element available for use in the DOM
 customElements.define('vevol-tabs', VevolTabs);
